@@ -37,3 +37,28 @@ export const getFrens =async (FrensHub:any, address: any) => {
   
 
 }
+
+export const getGames = async (GameHub:any) => {
+    
+    const totalGame  = await GameHub.totalGames();
+    const games = [];
+
+    for(let i=0;i<totalGame;i++) {
+
+        const [name, img, link ] = await GameHub.getGame(i);
+    
+
+        games.push({
+            name,
+            img,
+            link
+        })
+
+    }
+
+    console.log(games)
+    return games;
+
+  
+
+}

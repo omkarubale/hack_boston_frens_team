@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useContract, useProvider, useSigner, useAccount } from "wagmi";
+import { useContract, useProvider, useSigner, useAccount, useNetwork } from "wagmi";
 import GamePage from "../GamePage";
 
 
 import Abi from '../../abis/FrensHub.json'
-import ADDRESS from '../../abis/address.json';
+import {FrensHubAddress} from '../../abis/address';
 import { getFrens, getProfile } from "../../utils";
 import CreateProfile from "../CreateProfile";
 
@@ -14,6 +14,8 @@ export default function FrenTable() {
     const { data: signer, isError, isLoading } = useSigner()
     const { address, isConnecting, isDisconnected } = useAccount()
 
+    const { chain } = useNetwork();
+
     const provider = useProvider();
 
     const [handle, setHandle] = useState<string | null>(null);
@@ -22,7 +24,7 @@ export default function FrenTable() {
     const [frenToAdd, setFrenToAdd] = useState("");
 
     const FrensHub = useContract({
-        addressOrName: ADDRESS.FrensHubAddress,
+        addressOrName: FrensHubAddress(chain),
         contractInterface: Abi.abi,
         signerOrProvider: signer,
     })

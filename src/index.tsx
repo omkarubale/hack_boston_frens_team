@@ -16,7 +16,6 @@ const { chains, provider, webSocketProvider } = configureChains(
     klaytn_testnet,
     telos_testnet,
     bnb_testnet,
-    chain.localhost,
   ],
   [
     alchemyProvider({ apiKey: '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC' }),

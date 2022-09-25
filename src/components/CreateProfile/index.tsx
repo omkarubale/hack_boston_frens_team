@@ -1,11 +1,9 @@
 import ethers from "ethers";
 import React, { useState } from "react";
-import { useProvider, useSigner, useContract } from "wagmi";
-
-import Profile from '../Profile'
+import { useProvider, useSigner, useContract, useNetwork } from "wagmi";
 
 import Abi from '../../abis/FrensHub.json'
-import ADDRESS  from '../../abis/address.json';
+import {FrensHubAddress}  from '../../abis/address';
 
 export default function CreateProfile({ }) {
 
@@ -13,17 +11,19 @@ export default function CreateProfile({ }) {
     const { data: signer, isError, isLoading } = useSigner()
     const provider = useProvider();
 
+    const { chain } = useNetwork();
+
+
     const [handle, setHandle] = useState("");
 
     const FrensHub = useContract({
-        addressOrName: ADDRESS.FrensHubAddress,
+        addressOrName: FrensHubAddress(chain),
         contractInterface: Abi.abi,
         signerOrProvider: signer,
     })
 
 
     const handleClaim = (e:any) => {
-
         FrensHub
             .createProfile(handle)
             .then(console.log)
