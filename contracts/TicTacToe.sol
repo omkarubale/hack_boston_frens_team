@@ -108,6 +108,45 @@ contract TicTacToe {
         return (false, "This game already has 2 players.");
     }
 
+    // inviteToGame lets the sender of the message directly add the player with address 
+    // `player` to the game as the second game if the game has a vacant spot.
+    // To send an invite, the sender of the message has to be the other player of the game.
+    // It returns `isSuccess = true` if the invite was successful and `false` otherwise.
+    // `reason` indicates why the invite was successful or not successful.
+    function inviteToGame(uint256 _gameId, address player) public returns(bool isSuccess, string memory reason) {
+        Game storage currentGame = games[_gameId];
+
+        if(currentGame.playerOne != address(0) && currentGame.playerTwo != address(0)) {
+            return (false, "This game already has two players.");
+        }
+
+        // playerOne slot is empty
+        if(currentGame.playerOne == address(0)) {
+            if(currentGame.playerTwo != msg.sender) {
+                return (false, "You aren't a part of this game to send an invite.");
+            }
+
+            currentGame.playerOne = player;
+            emit PlayerJoinedGame(_gameId, player, uint8(Players.PlayerOne));
+            currentGame.playerTurn = Players.PlayerOne;
+
+            return (true, "The new player was invited and is now Player 1. Game started.");
+        }
+
+        // playerTwo slot is empty
+        if(currentGame.playerTwo == address(0)) {
+            if(currentGame.playerOne != msg.sender) {
+                return (false, "You aren't a part of this game to send an invite.");
+            }
+
+            currentGame.playerTwo = player;
+            emit PlayerJoinedGame(_gameId, player, uint8(Players.PlayerTwo));
+            currentGame.playerTurn = Players.PlayerOne;
+
+            return (true, "The new player was invited and is now Player 2. Game started.");
+        }
+    }
+
     // makeMove inserts a player on the game board.
     // The player is identified as the sender of the message.
     function makeMove(uint256 _gameId, uint8 _xCoordinate, uint8 _yCoordinate) public returns (bool isSuccess, string memory reason) {
@@ -314,6 +353,22 @@ contract TicTacToe {
         return allGamesList;
     }
 
+    // get all the games the sender is involved in
+    function getAllMyGames() public view returns(uint numberOfGames, uint256[] memory gameIds) {
+        uint gamesCount = 0;
+        uint256[] memory gamesToReturn;
+        for(uint i = 0; i < nrOfGames; i++) {
+            Game storage currentGame = games[i];
+
+            if(currentGame.playerOne == msg.sender || currentGame.playerTwo == msg.sender) {
+                gamesToReturn[gamesCount] = i;
+                gamesCount++;
+            }
+        }
+
+        return (gamesCount, gamesToReturn);
+    }
+
     // get game info
     function getGameInfo(uint256 _gameId) public view returns(Game memory returnedGame) {
         Game memory currentGame = games[_gameId];
@@ -344,6 +399,4 @@ contract TicTacToe {
         }
         return "Game hasn't started yet.";
     }
-    
-    
 }
