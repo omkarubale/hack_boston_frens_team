@@ -33,7 +33,8 @@ contract TicTacToe {
     // Games that are already over as well as games that are still running.
     // It is possible to iterate over all games, as the keys of the mapping
     // are known to be the integers from `1` to `nrOfGames`.
-     mapping(uint256 => Game) private games;
+    mapping(uint256 => Game) private games;
+    Game[] allGamesList;
     // nrOfGames stores the total number of games in this contract.
     uint256 private nrOfGames;
 
@@ -58,6 +59,7 @@ contract TicTacToe {
 
         nrOfGames++;
         games[nrOfGames] = currentGame;
+        allGamesList[nrOfGames] = currentGame;
 
         emit GameCreated(nrOfGames, msg.sender);
 
@@ -300,4 +302,48 @@ contract TicTacToe {
             _currentGame.playerTurn = Players.PlayerOne;
         }
     }
+
+    // get current state of the grid
+    function getGameGrid(uint256 _gameId) public view returns(uint8[3][3] memory board) {
+        Game memory currentGame = games[_gameId];
+        return currentGame.board;
+    }
+
+    // get all games in the contract
+    function getListOfGames() public view returns(Game[] memory returnedGames) {
+        return allGamesList;
+    }
+
+    // get game info
+    function getGameInfo(uint256 _gameId) public view returns(Game memory returnedGame) {
+        Game memory currentGame = games[_gameId];
+        return currentGame;
+    }
+
+    // gets game status: game has started or not
+    function getGameStatus(uint256 _gameId) public view returns(string memory status) {
+        Game memory currentGame = games[_gameId];
+
+        // game is over checks
+        if(currentGame.winner == Winners.PlayerOne) {
+            return "Game is over. Player 1 won.";
+        }
+        if(currentGame.winner == Winners.PlayerTwo) {
+            return "Game is over. Player 2 won.";
+        }
+        if(currentGame.winner == Winners.Draw) {
+            return "Game is over. It was a draw.";
+        }
+        
+        // game is still in progress
+        if(currentGame.playerTurn == Players.PlayerOne) {
+            return "It's Player 1's turn.";
+        }
+        if(currentGame.playerTurn == Players.PlayerTwo) {
+            return "It's Player 2's turn.";
+        }
+        return "Game hasn't started yet.";
+    }
+    
+    
 }
