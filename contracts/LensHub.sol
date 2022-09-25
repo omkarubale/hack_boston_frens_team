@@ -6,10 +6,11 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+import "./SouldBound.sol"
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-contract FrensHub is ERC721URIStorage, Ownable {
+contract FrensHub is Soulbound, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
@@ -31,7 +32,7 @@ contract FrensHub is ERC721URIStorage, Ownable {
 
     mapping(address => uint256) public profileIDs;
 
-    constructor() ERC721("FrensNFT", "FNFT") {
+    constructor() SoulBound("FrensNFT", "FNFT") {
         uint256[] memory newFrens;
         profiles.push(
             Profile(
