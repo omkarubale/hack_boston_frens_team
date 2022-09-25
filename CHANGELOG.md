@@ -1,186 +1,217 @@
-# with-create-react-app
+<!-- markdownlint-disable-file MD024 -->
 
-## 0.1.24
+# Changelog
 
-### Patch Changes
+All notable changes to this project will be documented in this file.
 
-- Updated dependencies [85eb3bd]
-- Updated dependencies [fbf9d82]
-  - @rainbow-me/rainbowkit@0.6.1
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 0.1.23
+## [0.9.0] 2022-09-14
 
-### Patch Changes
+### Added
 
-- Updated dependencies [c944ddc]
-- Updated dependencies [c944ddc]
-- Updated dependencies [c944ddc]
-- Updated dependencies [c944ddc]
-- Updated dependencies [c944ddc]
-  - @rainbow-me/rainbowkit@0.6.0
+- Support for deploying DApps to Arbitrum Goerli and Optimism Goerli
+- Internal queue added to Inspect Server in order to serialize concurrent requests
+- Quick-start recommendations using web environments Gitpod and CodeSandbox
 
-## 0.1.22
+### Changed
 
-### Patch Changes
+- Proper handling of inspect requests in SQLite DApp
+- Cleaner logs by using more appropriate logging levels in offchain components
+- DApp filesystem creation and DApp execution using regular 'dapp' user instead of root
+- Bump toolchain to 0.11.0
+- Bump rootfs to 0.14.1
+- Bump kernel to linux-5.5.19-ctsi-6
+- Bump rom to 0.12.0
+- Bump server-manager to 0.4.0
 
-- Updated dependencies [52e2ad6]
-  - @rainbow-me/rainbowkit@0.5.3
+## [0.8.1] 2022-08-24
 
-## 0.1.21
+### Changed
 
-### Patch Changes
+- Fix reference of docker image at docker-compose-testnet.yml
 
-- Updated dependencies [12912b3]
-- Updated dependencies [fcfc13d]
-- Updated dependencies [3f9013f]
-  - @rainbow-me/rainbowkit@0.5.2
+## [0.8.0] 2022-08-17
 
-## 0.1.20
+### Added
 
-### Patch Changes
+- Inspect Server allowing clients to directly query internal DApp state
+- Echo JavaScript DApp example
+- Documentation and tools to validate notices, execute vouchers, list reports and inspect DApp state
 
-- Updated dependencies [8060ccd]
-- Updated dependencies [4dfe834]
-- Updated dependencies [8060ccd]
-  - @rainbow-me/rainbowkit@0.5.1
+### Changed
 
-## 0.1.19
+- Major refactor in Indexer service, with significant improvements to the GraphQL API
+- Major refactor in State Fold service, with significant improvements to resource consumption
+- Use interval mining mode in Hardhat service for local development
+- Use Ethereum Goerli instead of Polygon Mumbai for live testnet deployments
+- Fix withdrawal voucher encoding in ERC-20 DApp example
+- Refactor of frontend-console commands structure
+- Bump server-manager to 0.3.1
 
-### Patch Changes
+## [0.7.2] 2022-07-28
 
-- Updated dependencies [737a1d6]
-- Updated dependencies [488c5a1]
-  - @rainbow-me/rainbowkit@0.5.0
+### Changed
 
-## 0.1.18
+- Fix toolchain docker image reference of Lua example
 
-### Patch Changes
+## [0.7.1] 2022-07-18
 
-- Updated dependencies [4333995]
-  - @rainbow-me/rainbowkit@0.4.8
+### Changed
 
-## 0.1.17
+- Remove Gitpod reference while we investigate an issue using it
 
-### Patch Changes
+## [0.7.0] 2022-07-06
 
-- Updated dependencies [1a4f2f7]
-  - @rainbow-me/rainbowkit@0.4.7
+### Added
 
-## 0.1.16
+- Echo Low-Level C++ DApp example
+- Echo Lua DApp example
+- ERC-20 DApp generating vouchers for withdrawals
 
-### Patch Changes
+### Changed
 
-- Updated dependencies [aae3163]
-- Updated dependencies [948c036]
-  - @rainbow-me/rainbowkit@0.4.6
+- Move rollup-init call from build-machine.sh to entrypoint.sh
+- Support for running nodes in host mode for DApps deployed on testnet
 
-## 0.1.15
+## [0.6.0] 2022-06-14
 
-### Patch Changes
+### Added
 
-- Updated dependencies [8dd5a74]
-  - @rainbow-me/rainbowkit@0.4.5
+- Deployment mechanism for EVM-compatible testnets
+- Echo Rust DApp example
+- Calculator DApp example
+- ERC-20 Deposit DApp example
+- Basic mechanism for adding extra Python dependencies
+- Usage of new exception endpoint in SQLite DApp example
 
-## 0.1.14
+### Changed
 
-### Patch Changes
+- Major reorganization of packages and build processes to reduce boilerplate code duplication
+- Major refactor of the frontend-console application, originally specific for the Echo Python DApp and now generalized to support sending inputs, querying notices and depositing ERC-20 tokens for all DApps, both locally and deployed on testnets
+- Deprecated usage of Hardhat tasks for interacting with applications in favor of the frontend-console
 
-- Updated dependencies [fd08aa1]
-  - @rainbow-me/rainbowkit@0.4.4
+## [0.5.1] 2022-05-02
 
-## 0.1.13
+### Changed
 
-### Patch Changes
+- Fix example Dockerfiles to stop referring to local .yalc directories
 
-- Updated dependencies [4857e75]
-- Updated dependencies [c6a1033]
-- Updated dependencies [396308f]
-  - @rainbow-me/rainbowkit@0.4.3
+## [0.5.0] 2022-04-29
 
-## 0.1.12
+### Changed
 
-### Patch Changes
+- Major update to rollups 0.2.0 with new HTTP API
+- Fix m2cgen example to work with Apple Silicon
 
-- Updated dependencies [0213b52]
-  - @rainbow-me/rainbowkit@0.4.2
+## [0.4.2] 2022-03-29
 
-## 0.1.11
+### Changed
 
-### Patch Changes
+- Fix Python DApp requirements due to changes in dependencies
 
-- Updated dependencies [3637bbb]
-- Updated dependencies [3637bbb]
-  - @rainbow-me/rainbowkit@0.4.1
+## [0.4.1] 2022-03-27
 
-## 0.1.10
+### Changed
 
-### Patch Changes
+- Fix m2cgen DApp build model requirements
 
-- Updated dependencies [08d189b]
-  - @rainbow-me/rainbowkit@0.4.0
+## [0.4.0] 2022-03-27
 
-## 0.1.9
+### Added
 
-### Patch Changes
+- Echo C++ DApp example
+- Converter DApp example
+- k-NN DApp example
+- m2cgen DApp example
 
-- Updated dependencies [b2b46ef]
-  - @rainbow-me/rainbowkit@0.3.7
+## [0.3.2] 2022-03-23
 
-## 0.1.8
+### Added
 
-### Patch Changes
+- Contributing guidelines and license
 
-- Updated dependencies [d905271]
-  - @rainbow-me/rainbowkit@0.3.6
+### Changed
 
-## 0.1.7
+- Updated Echo DApp polygon_mumbai deploy
+- Fix template Python requirements
 
-### Patch Changes
+## [0.3.1] 2022-03-15
 
-- Updated dependencies [40d838e]
-- Updated dependencies [1ab9c07]
-- Updated dependencies [1a7d50c]
-  - @rainbow-me/rainbowkit@0.3.5
+### Added
 
-## 0.1.6
+- Easy link in main README to open working development environment using Gitpod
 
-### Patch Changes
+### Changed
 
-- Updated dependencies [ac63f9a]
-  - @rainbow-me/rainbowkit@0.3.4
+- Use Chainstack for polygon_mumbai and not Infura
 
-## 0.1.5
+## [0.3.0] 2022-03-12
 
-### Patch Changes
+### Added
 
-- Updated dependencies [ee81177]
-  - @rainbow-me/rainbowkit@0.3.3
+- Frontend console application for Echo DApp
+- SQLite DApp example
+- Allow hardhat tasks to work on localhost
+- Use new Rollups getNotice task to retrieve notices
+- Support for submitting inputs and reading notices as UTF-8 strings
 
-## 0.1.4
+### Changed
 
-### Patch Changes
+- Locks `itsdangerous` to version 1.1.0 to avoid a crash when executing Echo DApp in host mode
+- AddInput task returning submitted input's index
 
-- Updated dependencies [33a2dd7]
-  - @rainbow-me/rainbowkit@0.3.2
+## [0.2.2] 2022-02-25
 
-## 0.1.3
+### Changed
 
-### Patch Changes
+- Fix make console
+- Fix server-manager container version
+- Bump rootfs to v0.10.0, which includes default support for Python sqlite3 core module
 
-- Updated dependencies [9d431fb]
-- Updated dependencies [11ed088]
-  - @rainbow-me/rainbowkit@0.3.1
+## [0.2.1] 2022-02-18
 
-## 0.1.2
+### Changed
 
-### Patch Changes
+- Fix error when using larger payload sizes.
 
-- Updated dependencies [233a6d7]
-  - @rainbow-me/rainbowkit@0.3.0
+## [0.2.0] 2022-01-17
 
-## 0.1.1
+### Added
 
-### Patch Changes
+- Add target to run cartesi-machine interactively in echo DApp
+- New contracts module for DApp smart contract deployment
 
-- Updated dependencies [ce473cd]
-  - @rainbow-me/rainbowkit@0.2.5
+### Changed
+
+- Enhance echo-dapp instructions
+- Simplify echo-dapp implementation to use dependencies directly from Cartesi rootfs
+- Bump image-rootfs to 0.9.0
+- Bump host-server-manager to 0.2.1
+- Change dapp and http-dispatcher ports in echo server run.sh script
+
+### Removed
+
+- Remove machine-emulator-tools submodule
+- Remove openapi-interfaces submodule
+
+[0.9.0]: https://github.com/cartesi/rollups-examples/releases/tag/v0.9.0
+[0.8.1]: https://github.com/cartesi/rollups-examples/releases/tag/v0.8.1
+[0.8.0]: https://github.com/cartesi/rollups-examples/releases/tag/v0.8.0
+[0.7.2]: https://github.com/cartesi/rollups-examples/releases/tag/v0.7.2
+[0.7.1]: https://github.com/cartesi/rollups-examples/releases/tag/v0.7.1
+[0.7.0]: https://github.com/cartesi/rollups-examples/releases/tag/v0.7.0
+[0.6.0]: https://github.com/cartesi/rollups-examples/releases/tag/v0.6.0
+[0.5.1]: https://github.com/cartesi/rollups-examples/releases/tag/v0.5.1
+[0.5.0]: https://github.com/cartesi/rollups-examples/releases/tag/v0.5.0
+[0.4.2]: https://github.com/cartesi/rollups-examples/releases/tag/v0.4.2
+[0.4.1]: https://github.com/cartesi/rollups-examples/releases/tag/v0.4.1
+[0.4.0]: https://github.com/cartesi/rollups-examples/releases/tag/v0.4.0
+[0.3.2]: https://github.com/cartesi/rollups-examples/releases/tag/v0.3.2
+[0.3.1]: https://github.com/cartesi/rollups-examples/releases/tag/v0.3.1
+[0.3.0]: https://github.com/cartesi/rollups-examples/releases/tag/v0.3.0
+[0.2.2]: https://github.com/cartesi/rollups-examples/releases/tag/v0.2.2
+[0.2.1]: https://github.com/cartesi/rollups-examples/releases/tag/v0.2.1
+[0.2.0]: https://github.com/cartesi/rollups-examples/releases/tag/v0.2.0
+[0.1.0]: https://github.com/cartesi/rollups-examples/releases/tag/v0.1.0
