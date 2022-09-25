@@ -13,14 +13,8 @@ import App from './App';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
-    chain.mainnet,
-    chain.polygon,
-    chain.optimism,
-    chain.arbitrum,
     klaytn_testnet,
-    ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true'
-      ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
-      : []),
+    chain.localhost,
   ],
   [
     alchemyProvider({ apiKey: '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC' }),
@@ -29,7 +23,7 @@ const { chains, provider, webSocketProvider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'RainbowKit demo',
+  appName: 'Game Frens',
   chains,
 });
 
