@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "./brightid/extensions/BrightIDValidatorOwnership.sol";
 
-contract BrightIDSoulbound is Context, ERC165, BrightIDValidatorOwnership {
+contract Soulbound is Context, ERC165, BrightIDValidatorOwnership {
     using Address for address;
     using Strings for uint256;
 
